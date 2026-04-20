@@ -327,7 +327,7 @@ int run() {
 
             // Actualizar tray tip con stats
             char tip[128];
-            _snprintf_s(tip, sizeof(tip), _TRUNCATE, "PenStream - %.1f fps | %d inputs", fps, stats.packets_received);
+            _snprintf_s(tip, sizeof(tip), _TRUNCATE, "PenStream - %.1f fps | %llu inputs", fps, (unsigned long long)stats.packets_received);
             update_tray_tip(tip);
 
             frames_sent = 0;
@@ -382,5 +382,5 @@ int main(int argc, char* argv[]) {
     std::cout << std::endl;
 
     // Llamar a WinMain manualmente
-    return penstream::WinMain(GetModuleHandle(NULL), NULL, NULL, SW_SHOW);
+    return WinMain(GetModuleHandle(NULL), NULL, NULL, SW_SHOW);
 }
