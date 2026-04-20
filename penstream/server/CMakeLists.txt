@@ -34,9 +34,14 @@ add_executable(penstream_server
     src/config/config_loader.cpp
 )
 
-# Usar siempre subsistema consola (main en vez de WinMain)
+# Subsistema Windows (GUI con WinMain) pero con consola para debug
 set_target_properties(penstream_server PROPERTIES
-    WIN32_EXECUTABLE FALSE
+    WIN32_EXECUTABLE TRUE
+)
+
+# Agregar shell32 para Shell_NotifyIcon
+target_link_libraries(penstream_server PRIVATE
+    shell32
 )
 
 # Include directories
